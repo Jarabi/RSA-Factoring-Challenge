@@ -2,6 +2,10 @@
 from sys import argv
 from math import isqrt
 
+'''A program to factorize as many numbers as possible
+    into a product of two smaller numbers.
+'''
+
 
 def main():
     if len(argv) != 2:
@@ -16,10 +20,14 @@ def main():
             print("{}={}*{}".format(number, number // 2, 2))
             continue
 
-        for n in range(3, (isqrt(number) + 1), 2):
+        m = 3
+        for n in range(m, (isqrt(number) + 1), 2):
             if number % n == 0:
                 print("{}={}*{}".format(number, number // n, n))
                 break
+
+        if m == (number // 2) + 1:
+            print("{}={}*{}".format(number, 1, number))
 
 
 if __name__ == "__main__":
