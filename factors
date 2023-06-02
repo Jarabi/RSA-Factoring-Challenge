@@ -1,0 +1,22 @@
+#!/usr/bin/python3
+from sys import argv
+from math import isqrt
+
+def main():
+    with open(argv[1], "r") as file:
+        # Optimize fetching using list comprehension
+        numbers = [int(num) for num in file]
+
+    for number in numbers:
+        if number % 2 == 0:
+            print("{}={}*{}".format(number, number // 2, 2))
+            continue
+
+        for n in range(3, (isqrt(number) + 1), 2):
+            if number % n == 0:
+                print("{}={}*{}".format(number, number // n, n))
+                break
+
+
+if __name__ == "__main__":
+    main()
