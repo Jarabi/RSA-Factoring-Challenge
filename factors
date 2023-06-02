@@ -2,7 +2,11 @@
 from sys import argv
 from math import isqrt
 
+
 def main():
+    if len(argv) != 2:
+        return
+
     with open(argv[1], "r") as file:
         # Optimize fetching using list comprehension
         numbers = [int(num) for num in file]
