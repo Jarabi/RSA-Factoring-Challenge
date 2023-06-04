@@ -2,8 +2,13 @@
 from sys import argv
 from math import isqrt
 
+'''Factorize all the things.'''
+
 
 def main():
+    '''Factorize as many numbers as possible into a product
+    of two smaller numbers.
+    '''
     if len(argv) != 2:
         print("Usage: factors <file>")
         return
@@ -24,4 +29,5 @@ def main():
 
 
 if __name__ == "__main__":
+    '''Run the main function'''
     main()
