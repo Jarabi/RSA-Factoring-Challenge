@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 from sys import argv
 from math import isqrt
-import time
 
 def main():
     if len(argv) != 2:
@@ -27,14 +26,4 @@ def main():
 
 
 if __name__ == "__main__":
-    start_time = time.time()
     main()
-    end_time = time.time()
-
-    elapsed_time = end_time - start_time
-    cpu_time = time.process_time()
-    system_time = end_time - cpu_time
-
-    print("real 0m0.{0:.0f}s".format(elapsed_time))
-    print("user 0m0.{0:.0f}s".format(cpu_time))
-    print("sys 0m0.{0:.1f}s".format(system_time))
