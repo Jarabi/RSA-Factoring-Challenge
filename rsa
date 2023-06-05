@@ -1,0 +1,32 @@
+#!/usr/bin/python3
+from sys import argv
+from math import isqrt
+
+'''RSA Factoring challenge.'''
+
+
+def main():
+    '''RSA Laboratories states that: for each RSA number n,
+    there exist prime numbers p and q such that n = p × q.
+    The problem is to find these two primes, given only n.
+    '''
+    if len(argv) != 2:
+        print("Usage: rsa <file>")
+        return
+
+    with open(argv[1], "r") as file:
+        number = file.readline()
+        number = int(number)
+
+        if number % 2 == 0:
+            print("{}={}*{}".format(number, number // 2, 2))
+
+        for n in range(3, (isqrt(number) + 1), 2):
+            if number % n == 0:
+                print("{}={}*{}".format(number, number // n, n))
+                break
+
+
+if __name__ == "__main__":
+    '''Run the main function'''
+    main()
