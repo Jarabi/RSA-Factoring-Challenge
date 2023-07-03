@@ -45,7 +45,7 @@ def main():
 
         if result is not None:
             factor1, factor2 = result
-            print(f"{number}={factor1} * {factor2}")
+            print(f"{number}={factor1}*{factor2}")
 
 
 if __name__ == "__main__":
