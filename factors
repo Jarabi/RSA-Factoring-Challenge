@@ -5,6 +5,27 @@ from math import isqrt
 '''Factorize all the things.'''
 
 
+def factorize(number, factors_cache):
+    '''
+    Factorize the number
+    '''
+    if number in factors_cache:
+        return factors_cache[number]
+
+    if number % 2 == 0:
+        result = (number // 2, 2)
+    else:
+        for n in range(3, (isqrt(number) + 1), 2):
+            if number % n == 0:
+                result = (number // n, n)
+                break
+        else:
+            result = None
+
+    factors_cache[number] = result
+    return result
+
+
 def main():
     '''Factorize as many numbers as possible into a product
     of two smaller numbers.
@@ -13,19 +34,18 @@ def main():
         print("Usage: factors <file>")
         return
 
+    factors_cache = {}
+
     with open(argv[1], "r") as file:
         # Optimize fetching using list comprehension
         numbers = [int(num) for num in file]
 
     for number in numbers:
-        if number % 2 == 0:
-            print("{}={}*{}".format(number, number // 2, 2))
-            continue
+        result = factorize(number, factors_cache)
 
-        for n in range(3, (isqrt(number) + 1), 2):
-            if number % n == 0:
-                print("{}={}*{}".format(number, number // n, n))
-                break
+        if result is not None:
+            factor1, factor2 = result
+            print(f"{number}={factor1} * {factor2}")
 
 
 if __name__ == "__main__":
